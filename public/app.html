@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | SkillSwap</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <img class="brand-logo" src="/assets/skillswap-logo.png" alt="SkillSwap logo" />
+          <p class="eyebrow">Skill exchange platform</p>
+          <h1>SkillSwap</h1>
+        </div>
+        <div class="topbar-actions">
+          <a class="ghost-btn nav-link-btn" href="/">Home</a>
+          <button id="logout-btn" class="primary-btn">Logout</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="workspace-shell app-workspace">
+          <aside class="workspace-nav card">
+            <p class="eyebrow">Workspace</p>
+            <h3>Dashboard</h3>
+            <div class="workspace-links">
+              <a class="workspace-link" data-view="overview" href="/app?view=overview"><span class="nav-icon"></span><span>Overview</span></a>
+              <a class="workspace-link" data-view="profile" href="/app?view=profile"><span class="nav-icon"></span><span>Profile</span></a>
+              <a class="workspace-link" data-view="skills" href="/app?view=skills"><span class="nav-icon"></span><span>My Skills</span></a>
+              <a class="workspace-link" data-view="explore" href="/app?view=explore"><span class="nav-icon"></span><span>Explore Skills</span></a>
+              <a class="workspace-link" data-view="library" href="/app?view=library"><span class="nav-icon"></span><span>Resource Library</span></a>
+              <a class="workspace-link" data-view="growth" href="/app?view=growth"><span class="nav-icon"></span><span>Growth Lab</span></a>
+              <a class="workspace-link" data-view="circles" href="/app?view=circles"><span class="nav-icon"></span><span>Learning Circles</span></a>
+              <a class="workspace-link" data-view="requests" href="/app?view=requests"><span class="nav-icon"></span><span>Requests</span></a>
+              <a class="workspace-link" data-view="messages" href="/app?view=messages"><span class="nav-icon"></span><span>Messages</span></a>
+              <a class="workspace-link" data-view="reviews" href="/app?view=reviews"><span class="nav-icon"></span><span>Reviews & Reports</span></a>
+              <a id="admin-nav-link" class="workspace-link hidden" data-view="admin" href="/app?view=admin"><span class="nav-icon"></span><span>Admin</span></a>
+            </div>
+          </aside>
+
+          <div class="workspace-content">
+            <section class="workspace-view" data-view="overview">
+              <div class="card">
+                <p class="eyebrow">Welcome back</p>
+                <h3>Your SkillSwap workspace</h3>
+                <div id="user-identity" class="identity-banner"></div>
+                <p class="hero-copy">Move through the dashboard using the sidebar. Each area has its own route and focused purpose.</p>
+                <div id="overview-stats" class="overview-stats"></div>
+                <div id="badge-strip" class="badge-strip top-gap"></div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="profile">
+              <div class="card">
+                <p class="eyebrow">Account</p>
+                <h3>Profile settings</h3>
+                <form id="profile-form" class="stack-form top-gap">
+                  <input type="text" id="profile-name" placeholder="Name" required />
+                  <input type="text" id="profile-location" placeholder="Location" />
+                  <input type="text" id="profile-availability" placeholder="Availability" />
+                  <input type="url" id="profile-avatar" placeholder="Avatar URL" />
+                  <textarea id="profile-bio" rows="4" placeholder="Short bio"></textarea>
+                  <button type="submit" class="primary-btn">Save profile</button>
+                </form>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="skills">
+              <div class="dashboard-grid">
+                <div class="card">
+                  <p class="eyebrow">Teach</p>
+                  <h3>Add a skill</h3>
+                  <form id="skill-form" class="stack-form top-gap">
+                    <input type="text" id="skill-title" placeholder="Skill title" required />
+                    <select id="skill-category" required></select>
+                    <select id="skill-level">
+                      <option>Beginner</option>
+                      <option>Intermediate</option>
+                      <option>Advanced</option>
+                    </select>
+                    <textarea id="skill-description" rows="4" placeholder="What can you teach?"></textarea>
+                    <button type="submit" class="primary-btn">Add skill</button>
+                  </form>
+                </div>
+                <div class="card">
+                  <p class="eyebrow">Library</p>
+                  <h3>My skills</h3>
+                  <div id="my-skills" class="list-block"></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="explore">
+              <div class="card">
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Discover</p>
+                    <h3>Explore available skills</h3>
+                  </div>
+                  <div class="filters">
+                    <input type="text" id="search-keyword" placeholder="Search skill or category" />
+                    <select id="search-category"></select>
+                    <button id="search-btn" class="primary-btn" type="button">Search</button>
+                  </div>
+                </div>
+                <div id="skill-results" class="list-block"></div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="library">
+              <div class="card">
+                <p class="eyebrow">Reference Hub</p>
+                <h3>Curated learning resources</h3>
+                <div id="resource-library" class="resource-library top-gap"></div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="growth">
+              <div class="dashboard-grid">
+                <div class="card">
+                  <p class="eyebrow">AI planning</p>
+                  <h3>Learning roadmap generator</h3>
+                  <form id="roadmap-form" class="stack-form top-gap">
+                    <input type="text" id="roadmap-skill-topic" placeholder="Skill topic" required />
+                    <input type="text" id="roadmap-current-level" placeholder="Current level" required />
+                    <textarea id="roadmap-goal" rows="4" placeholder="What do you want to achieve?" required></textarea>
+                    <button type="submit" class="primary-btn">Generate roadmap</button>
+                  </form>
+                  <div id="roadmap-list" class="list-block"></div>
+                </div>
+
+                <div class="card">
+                  <p class="eyebrow">Study assistant</p>
+                  <h3>SkillSwap AI bot</h3>
+                  <div id="ai-status" class="helper-text top-gap"></div>
+                  <form id="ai-chat-form" class="stack-form top-gap">
+                    <textarea id="ai-message" rows="4" placeholder="Ask for study strategy, project ideas, revision help, or practice suggestions." required></textarea>
+                    <button type="submit" class="primary-btn">Ask AI</button>
+                  </form>
+                  <div id="ai-chat-replies" class="list-block"></div>
+                </div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="card">
+                  <p class="eyebrow">Reflection</p>
+                  <h3>Session notes</h3>
+                  <form id="notes-form" class="stack-form top-gap">
+                    <input type="number" id="note-request-id" placeholder="Request ID (optional)" />
+                    <input type="text" id="note-title" placeholder="Session title" required />
+                    <textarea id="note-body" rows="4" placeholder="What did you learn? What is next?" required></textarea>
+                    <button type="submit" class="ghost-btn">Save note</button>
+                  </form>
+                  <div id="notes-list" class="list-block"></div>
+                </div>
+
+                <div class="card">
+                  <p class="eyebrow">Recognition</p>
+                  <h3>Badges and streaks</h3>
+                  <div id="growth-summary" class="growth-summary top-gap"></div>
+                </div>
+              </div>
+
+              <div class="card top-gap">
+                <p class="eyebrow">Credibility</p>
+                <h3>Portfolio verification</h3>
+                <form id="verification-form" class="stack-form top-gap">
+                  <input type="text" id="verification-title" placeholder="Skill or portfolio title" required />
+                  <input type="url" id="verification-portfolio-url" placeholder="Portfolio URL" required />
+                  <textarea id="verification-proof" rows="4" placeholder="Explain the proof or project context"></textarea>
+                  <button type="submit" class="primary-btn">Submit verification</button>
+                </form>
+                <div id="verification-list" class="list-block"></div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="circles">
+              <div class="dashboard-grid">
+                <div class="card">
+                  <p class="eyebrow">Community</p>
+                  <h3>Create a learning circle</h3>
+                  <form id="circle-form" class="stack-form top-gap">
+                    <input type="text" id="circle-name" placeholder="Circle name" required />
+                    <select id="circle-category" required></select>
+                    <textarea id="circle-description" rows="4" placeholder="What is this circle about?"></textarea>
+                    <button type="submit" class="primary-btn">Create circle</button>
+                  </form>
+                  <div id="my-circles" class="list-block"></div>
+                </div>
+
+                <div class="card">
+                  <p class="eyebrow">Network</p>
+                  <h3>Browse circles</h3>
+                  <div id="circles-list" class="list-block top-gap"></div>
+                </div>
+              </div>
+
+              <div class="card top-gap">
+                <p class="eyebrow">Bookmarks</p>
+                <h3>Favorite teachers</h3>
+                <div id="favorites-list" class="list-block"></div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="requests">
+              <div class="card">
+                <p class="eyebrow">Exchange flow</p>
+                <h3>Request center</h3>
+                <div class="tabs top-gap">
+                  <button class="tab-btn active" data-tab="incoming">Incoming</button>
+                  <button class="tab-btn" data-tab="outgoing">Outgoing</button>
+                  <button class="tab-btn" data-tab="accepted">Accepted / Completed</button>
+                </div>
+                <div id="dashboard-lists" class="list-block"></div>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="messages">
+              <div class="card">
+                <p class="eyebrow">Conversation</p>
+                <h3>Messages</h3>
+                <p class="helper-text">Open messages from a request card, or enter a valid request ID here.</p>
+                <div class="message-toolbar top-gap">
+                  <input type="number" id="message-request-id" placeholder="Exchange request ID" />
+                  <button id="load-messages-btn" class="ghost-btn" type="button">Load conversation</button>
+                </div>
+                <div id="messages-list" class="message-list"></div>
+                <form id="message-form" class="message-form">
+                  <input type="text" id="message-text" placeholder="Type your message" required />
+                  <button type="submit" class="primary-btn">Send</button>
+                </form>
+              </div>
+            </section>
+
+            <section class="workspace-view" data-view="reviews">
+              <div class="dashboard-grid">
+                <div class="card">
+                  <p class="eyebrow">Trust</p>
+                  <h3>Rate a completed exchange</h3>
+                  <form id="rating-form" class="stack-form top-gap">
+                    <input type="number" id="rating-request-id" placeholder="Request ID" required />
+                    <input type="number" id="rating-user-id" placeholder="User ID to rate" required />
+                    <select id="rating-score">
+                      <option value="5">5 - Excellent</option>
+                      <option value="4">4 - Good</option>
+                      <option value="3">3 - Average</option>
+                      <option value="2">2 - Fair</option>
+                      <option value="1">1 - Poor</option>
+                    </select>
+                    <textarea id="rating-feedback" rows="4" placeholder="Feedback"></textarea>
+                    <button type="submit" class="primary-btn">Submit rating</button>
+                  </form>
+                </div>
+                <div class="card">
+                  <p class="eyebrow">Support</p>
+                  <h3>Report a user</h3>
+                  <form id="report-form" class="stack-form top-gap">
+                    <input type="number" id="report-user-id" placeholder="Reported user ID" required />
+                    <input type="text" id="report-reason" placeholder="Reason" required />
+                    <textarea id="report-details" rows="3" placeholder="Additional details"></textarea>
+                    <button type="submit" class="ghost-btn">Submit report</button>
+                  </form>
+                </div>
+              </div>
+            </section>
+
+            <section id="admin-panel" class="workspace-view hidden" data-view="admin">
+              <div class="card">
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Control room</p>
+                    <h3>Admin panel</h3>
+                  </div>
+                  <button id="admin-refresh-btn" class="primary-btn" type="button">Refresh admin data</button>
+                </div>
+                <div id="admin-stats" class="admin-stats top-gap"></div>
+                <div class="dashboard-grid top-gap">
+                  <div>
+                    <h4>Users</h4>
+                    <div id="admin-users" class="list-block"></div>
+                  </div>
+                  <div>
+                    <h4>Reports</h4>
+                    <div id="admin-reports" class="list-block"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>

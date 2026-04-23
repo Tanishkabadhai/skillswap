@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillSwap</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <img class="brand-logo" src="/assets/skillswap-logo.png" alt="SkillSwap logo" />
+          <p class="eyebrow">Skill exchange platform</p>
+          <h1>SkillSwap</h1>
+        </div>
+        <div class="topbar-actions">
+          <a id="landing-secondary-action" class="ghost-btn nav-link-btn" href="/login">Login</a>
+          <a id="landing-primary-action" class="primary-btn nav-link-btn" href="/register">Create account</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero card landing-hero">
+          <div class="hero-copy-block">
+            <div class="hero-pill">Peer learning for ambitious students and creators</div>
+            <p class="eyebrow">Teach what you know. Learn what you need.</p>
+            <h2>Swap skills, discover resources, and build confidence together.</h2>
+            <p class="hero-copy">
+              SkillSwap is a student-first platform for practical learning exchange. Discover people who can teach what
+              you need, offer your own strengths, and grow through structured collaboration instead of random browsing.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-btn nav-link-btn" href="/register">Start now</a>
+              <a class="ghost-btn nav-link-btn" href="/login">I already have an account</a>
+            </div>
+          </div>
+          <div class="hero-stage">
+            <div class="hero-orb hero-orb-a"></div>
+            <div class="hero-orb hero-orb-b"></div>
+            <div class="hero-panel hero-panel-primary">
+              <span class="mini-label">Skill match flow</span>
+              <strong>Discover → Request → Message → Learn</strong>
+              <p>Move through skill exchange with a guided workflow that feels intentional and easy to trust.</p>
+            </div>
+            <div class="hero-panel hero-panel-search landing-search-panel">
+              <span class="mini-label">Jump into exploration</span>
+              <div class="search-mock live-search-mock">
+                <input id="hero-search-input" type="text" placeholder="Search Python, Guitar, UI Design..." />
+                <button id="hero-search-btn" type="button">Go</button>
+              </div>
+            </div>
+            <div class="hero-stats user-value-stats">
+              <div><strong>Find mentors</strong><span>Search real skills by category</span></div>
+              <div><strong>Exchange safely</strong><span>Requests, messages, ratings, and reports</span></div>
+              <div><strong>Stay useful</strong><span>Resource library even before launch scale</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="story-grid">
+          <article class="card story-card">
+            <p class="eyebrow">Why SkillSwap</p>
+            <h3>Turn your strongest skill into someone else’s breakthrough.</h3>
+            <p>
+              Students often know more than they think. SkillSwap helps that hidden knowledge become visible, useful,
+              and collaborative.
+            </p>
+          </article>
+          <article class="card story-card">
+            <p class="eyebrow">Designed For Trust</p>
+            <h3>Every exchange has structure.</h3>
+            <p>
+              Profiles, requests, in-context messaging, completion tracking, ratings, and reporting help the platform
+              feel reliable from the start.
+            </p>
+          </article>
+          <article class="card story-card">
+            <p class="eyebrow">Useful On Day One</p>
+            <h3>Learning resources fill the empty-state problem.</h3>
+            <p>
+              Even before the community grows large, curated resources keep the platform valuable and worth returning to.
+            </p>
+          </article>
+        </section>
+
+        <section class="card value-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">What You Can Do</p>
+              <h3>Built for students, creators, and peer mentors</h3>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <strong>Create a learning identity</strong>
+              <p>Show your skills, your availability, and what kind of help you can offer to others.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Search by topic</strong>
+              <p>Explore programming, design, music, language, and academic categories in one clean flow.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Track exchange requests</strong>
+              <p>Keep incoming, outgoing, accepted, and completed exchanges organized in one place.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Chat with purpose</strong>
+              <p>Open a request-based conversation instead of messy unstructured messaging.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Review and build trust</strong>
+              <p>Ratings and reports help shape a safer, more credible learning community over time.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Use curated resources</strong>
+              <p>Starter material helps learners begin immediately, even before they find the perfect match.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="card resource-preview">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Learning Library</p>
+              <h3>Starter references for popular topics</h3>
+            </div>
+            <a class="ghost-btn nav-link-btn" href="/login">Open full library</a>
+          </div>
+          <div id="resource-preview" class="feature-grid"></div>
+        </section>
+
+        <section class="card ideas-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Coming Next</p>
+              <h3>Ideas that can make SkillSwap even stronger</h3>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <strong>AI learning roadmap</strong>
+              <p>Generate a custom path for a chosen skill based on your current level and goals.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Session notes and summaries</strong>
+              <p>Save what was learned after each exchange so progress becomes visible.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Badges and streaks</strong>
+              <p>Reward consistent teaching, completed exchanges, and quality feedback.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/landing.js"></script>
+  </body>
+</html>
