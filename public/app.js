@@ -121,7 +121,7 @@ const api = async (path, options = {}) => {
   const contentType = response.headers.get("content-type") || "";
   const data = contentType.includes("application/json")
     ? await response.json()
-    : { message: "The server returned an unexpected response." };
+    : { message: await response.text() || "The server returned an unexpected response." };
 
   if (!response.ok) {
     throw new Error(data.message || "Request failed.");
@@ -456,7 +456,11 @@ const renderMyCircles = (circles) => {
 };
 
 const fetchCategories = async () => {
-  const data = await fetch("/api/categories").then((response) => response.json());
+  const data = await api("/api/categories", {
+    headers: {
+      Authorization: ""
+    }
+  });
   state.categories = data.categories || [];
   ui.searchCategory.innerHTML = optionMarkup(state.categories, true);
   ui.skillCategory.innerHTML = optionMarkup(state.categories);
@@ -942,6 +946,18 @@ window.updateReport = async (reportId, status) => {
     showToast(error.message, true);
   }
 };
+
+ui.workspaceLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    setView(link.dataset.view, false);
+  });
+});
+
+window.addEventListener("popstate", () => {
+  const view = new URLSearchParams(window.location.search).get("view") || "overview";
+  setView(view);
+});
 
 window.loadMessages = loadMessages;
 

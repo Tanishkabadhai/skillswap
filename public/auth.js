@@ -21,7 +21,10 @@ const api = async (path, options = {}) => {
       ...(options.headers || {})
     }
   });
-  const data = await response.json();
+  const contentType = response.headers.get("content-type") || "";
+  const data = contentType.includes("application/json")
+    ? await response.json()
+    : { message: await response.text() || "The server returned an unexpected response." };
   if (!response.ok) {
     throw new Error(data.message || "Request failed.");
   }
