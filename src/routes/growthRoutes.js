@@ -7,6 +7,16 @@ const router = express.Router();
 
 router.use(authenticate);
 
+const buildFallbackRoadmap = ({ skillTopic, currentLevel, goal }) =>
+  [
+    `1. Clarify the target for ${skillTopic} and define one small win for this week.`,
+    `2. Review fundamentals appropriate for a ${currentLevel} learner and identify weak spots.`,
+    `3. Practice one project-based exercise aligned with the goal: ${goal}.`,
+    `4. Schedule one peer exchange or feedback session inside SkillSwap.`,
+    `5. Record notes, blockers, and next steps after each study session.`,
+    `6. Reassess progress after one week and raise the challenge level gradually.`
+  ].join("\n");
+
 router.get("/favorites", async (req, res, next) => {
   try {
     const favorites = await query(
@@ -78,20 +88,18 @@ router.post("/roadmaps", async (req, res, next) => {
     let roadmapText;
 
     if (hasOpenAI()) {
-      roadmapText = await createResponse({
-        instructions:
-          "You generate learning roadmaps for students. Return a structured 6-step roadmap with short headings and practical actions. Keep it concise but specific.",
-        input: `Create a roadmap for skill topic: ${skillTopic}. Current level: ${currentLevel}. Goal: ${goal}.`
-      });
+      try {
+        roadmapText = await createResponse({
+          instructions:
+            "You generate learning roadmaps for students. Return a structured 6-step roadmap with short headings and practical actions. Keep it concise but specific.",
+          input: `Create a roadmap for skill topic: ${skillTopic}. Current level: ${currentLevel}. Goal: ${goal}.`
+        });
+      } catch (error) {
+        console.error("AI roadmap generation failed, using fallback roadmap.", error);
+        roadmapText = buildFallbackRoadmap({ skillTopic, currentLevel, goal });
+      }
     } else {
-      roadmapText = [
-        `1. Clarify the target for ${skillTopic} and define one small win for this week.`,
-        `2. Review fundamentals appropriate for a ${currentLevel} learner and identify weak spots.`,
-        `3. Practice one project-based exercise aligned with the goal: ${goal}.`,
-        `4. Schedule one peer exchange or feedback session inside SkillSwap.`,
-        `5. Record notes, blockers, and next steps after each study session.`,
-        `6. Reassess progress after one week and raise the challenge level gradually.`
-      ].join("\n");
+      roadmapText = buildFallbackRoadmap({ skillTopic, currentLevel, goal });
     }
 
     const result = await query(
