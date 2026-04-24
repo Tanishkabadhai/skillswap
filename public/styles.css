@@ -165,6 +165,7 @@ p {
 
 .hero,
 .story-grid,
+.showcase-grid,
 .value-section,
 .resource-preview,
 .grid-two,
@@ -368,6 +369,7 @@ p {
 }
 
 .story-grid,
+.showcase-grid,
 .feature-grid,
 .resource-library,
 .overview-stats,
@@ -381,6 +383,10 @@ p {
 .story-grid,
 .feature-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.showcase-grid {
+  grid-template-columns: 1.15fr 0.85fr 0.85fr;
 }
 
 .grid-two,
@@ -399,6 +405,7 @@ p {
 
 .story-card,
 .feature-card,
+.visual-card,
 .resource-card,
 .stat-card {
   border-radius: var(--radius-lg);
@@ -417,12 +424,50 @@ p {
   padding: 20px;
 }
 
+.visual-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px;
+  gap: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 138, 61, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+}
+
+.visual-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.visual-art,
+.resource-art {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.visual-art {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
 .ideas-section {
   margin-top: 24px;
 }
 
 .resource-card {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resource-art {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .resource-tag,
@@ -907,6 +952,7 @@ button:hover {
   .admin-stats,
   .overview-stats,
   .story-grid,
+  .showcase-grid,
   .feature-grid,
   .resource-library,
   .growth-summary,
