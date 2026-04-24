@@ -531,6 +531,55 @@ p {
   text-decoration: underline;
 }
 
+.dashboard-hero-card {
+  background:
+    radial-gradient(circle at top right, rgba(111, 255, 233, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+.dashboard-hero-media {
+  display: grid;
+  grid-template-columns: 1.5fr 0.7fr;
+  gap: 16px;
+}
+
+.dashboard-hero-media img,
+.section-visual,
+.dashboard-inline-banner img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dashboard-hero-media img:first-child {
+  aspect-ratio: 16 / 8;
+}
+
+.dashboard-hero-media img:last-child {
+  aspect-ratio: 1 / 1;
+}
+
+.section-visual {
+  aspect-ratio: 16 / 8;
+}
+
+.dashboard-inline-banner {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 18px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 16px;
+}
+
+.dashboard-inline-banner img {
+  aspect-ratio: 16 / 10;
+}
+
 .workspace-shell {
   align-items: flex-start;
 }
@@ -1029,6 +1078,11 @@ button:hover {
   .hero-stage {
     display: grid;
     min-height: auto;
+  }
+
+  .dashboard-hero-media,
+  .dashboard-inline-banner {
+    grid-template-columns: 1fr;
   }
 
   .hero-image-stack {

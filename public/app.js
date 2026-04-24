@@ -14,6 +14,7 @@ const resourceLibrary = [
     category: "Programming",
     title: "Python and Web Development",
     summary: "Use these references to learn syntax, frameworks, and project-based development.",
+    image: "/assets/creative-workspace.jpg",
     links: [
       { label: "Python Official Tutorial", url: "https://docs.python.org/3/tutorial/" },
       { label: "MDN Web Docs", url: "https://developer.mozilla.org/" },
@@ -26,6 +27,7 @@ const resourceLibrary = [
     category: "Design",
     title: "UI, UX, and Visual Thinking",
     summary: "Starter material for interface design, layout, and accessibility thinking.",
+    image: "/assets/abstract-orb.jpg",
     links: [
       { label: "Nielsen Norman Group", url: "https://www.nngroup.com/" },
       { label: "Material Design", url: "https://m3.material.io/" },
@@ -38,6 +40,7 @@ const resourceLibrary = [
     category: "Languages",
     title: "Language Learning Resources",
     summary: "Helpful references for vocabulary, grammar, and speaking practice.",
+    image: "/assets/online-mentoring.jpg",
     links: [
       { label: "Duolingo Blog", url: "https://blog.duolingo.com/" },
       { label: "BBC Languages Archive", url: "https://www.bbc.co.uk/languages/" },
@@ -50,6 +53,7 @@ const resourceLibrary = [
     category: "Music",
     title: "Guitar, Singing, and Practice",
     summary: "Resources to support beginner-to-intermediate music learners and peer mentors.",
+    image: "/assets/music-studio.jpg",
     links: [
       { label: "JustinGuitar", url: "https://www.justinguitar.com/" },
       { label: "musictheory.net", url: "https://www.musictheory.net/" },
@@ -62,6 +66,7 @@ const resourceLibrary = [
     category: "Academics",
     title: "Study Support and Fundamentals",
     summary: "Useful references for math, science, and self-paced student revision.",
+    image: "/assets/learning-group.jpg",
     links: [
       { label: "Khan Academy", url: "https://www.khanacademy.org/" },
       { label: "MIT OpenCourseWare", url: "https://ocw.mit.edu/" },
@@ -162,6 +167,7 @@ const renderResources = () => {
     .map(
       (resource) => `
         <article class="card resource-card">
+          <img class="resource-art" src="${resource.image}" alt="${resource.title}" />
           <span class="resource-tag">${resource.category}</span>
           <strong>${resource.title}</strong>
           <p>${resource.summary}</p>
