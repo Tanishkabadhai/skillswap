@@ -3,7 +3,7 @@ const resourceLibrary = [
     category: "Programming",
     title: "Python and Web Development",
     summary: "Use these references to learn syntax, frameworks, and project-based development.",
-    image: "/assets/illustration-roadmap.svg",
+    image: "/assets/creative-workspace.jpg",
     links: [
       { label: "Python Official Tutorial", url: "https://docs.python.org/3/tutorial/" },
       { label: "MDN Web Docs", url: "https://developer.mozilla.org/" },
@@ -14,7 +14,7 @@ const resourceLibrary = [
     category: "Design",
     title: "UI, UX, and Visual Thinking",
     summary: "Starter material for interface design, layout, and accessibility thinking.",
-    image: "/assets/illustration-mentor.svg",
+    image: "/assets/abstract-orb.jpg",
     links: [
       { label: "Nielsen Norman Group", url: "https://www.nngroup.com/" },
       { label: "Material Design", url: "https://m3.material.io/" },
@@ -25,7 +25,7 @@ const resourceLibrary = [
     category: "Music",
     title: "Guitar, Singing, and Practice",
     summary: "Resources to support beginner-to-intermediate music learners and peer mentors.",
-    image: "/assets/illustration-circle.svg",
+    image: "/assets/music-studio.jpg",
     links: [
       { label: "JustinGuitar", url: "https://www.justinguitar.com/" },
       { label: "musictheory.net", url: "https://www.musictheory.net/" },

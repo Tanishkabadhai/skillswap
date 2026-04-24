@@ -235,6 +235,37 @@ p {
   padding-top: 20px;
 }
 
+.hero-image-stack {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  justify-self: end;
+  min-height: 280px;
+  margin-bottom: 8px;
+}
+
+.hero-photo {
+  position: absolute;
+  display: block;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+}
+
+.hero-photo-main {
+  inset: 0 48px 20px 0;
+  width: calc(100% - 48px);
+  height: 260px;
+}
+
+.hero-photo-float {
+  right: 0;
+  bottom: 0;
+  width: 170px;
+  height: 170px;
+}
+
 .hero-orb {
   position: absolute;
   border-radius: 999px;
@@ -452,6 +483,7 @@ p {
 .visual-art {
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center;
 }
 
 .ideas-section {
@@ -468,6 +500,7 @@ p {
 .resource-art {
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: center;
 }
 
 .resource-tag,
@@ -944,6 +977,10 @@ button:hover {
   .hero-stats {
     left: 18px;
   }
+
+  .hero-image-stack {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 920px) {
@@ -992,6 +1029,21 @@ button:hover {
   .hero-stage {
     display: grid;
     min-height: auto;
+  }
+
+  .hero-image-stack {
+    min-height: 240px;
+  }
+
+  .hero-photo-main {
+    inset: 0 24px 14px 0;
+    width: calc(100% - 24px);
+    height: 220px;
+  }
+
+  .hero-photo-float {
+    width: 132px;
+    height: 132px;
   }
 
   .hero-stats {
